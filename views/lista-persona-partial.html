@@ -1,0 +1,49 @@
+<!-- templates/lista-persona-partial -->
+
+
+</br>
+<div class="panel panel-default">
+    <div class="panel-heading">Contactos</div>
+    <div class="panel-body"> Parámetro: <input type="text" id="parametro" name="parametro" />
+    <button class="btn-xs btn-default btn-del" ng-click="buscarContactos()">Buscar</button>
+    <div class="panel-body"><input class="form-control w8 input-sm" size="8" placeholder="Filtros" ng-model="filter" />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+		                <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Alias</th>
+                    <th>Dirección</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Fecha Creación</th>
+                    <th>Fecha Modificación</th>
+                </tr>
+            </thead>
+	          <tbody>
+                <tr ng-repeat="contacto in data.lista | filter:filter">
+			               <td>{{contacto.id}}</td>
+                     <td>{{contacto.nombre}}</td>
+                     <td>{{contacto.apellido}}</td>
+                     <td>{{contacto.alias}}</td>
+                     <td>{{contacto.direccion}}</td>
+                     <td>{{contacto.email}}</td>
+                     <td>{{contacto.telefono}}</td>
+                     <td>{{contacto.fechacreacion | date:'dd-MM-­yyyy HH:ss'}}</td>
+                     <td>{{contacto.fechamodificacion | date:'dd­-MM-­yyyy HH:ss'}}</td>
+                     <td><button class="btn-xs btn-default btn-del" ng-click="editar(contacto)">Editar</button></td>
+                     <td><button class="btn-xs btn-default btn-del" ng-click="remove(contacto)">Borrar</button></td>
+                     <td><button class="btn-xs btn-default btn-del" ng-click="getContact(contacto)">Consultar</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <pagination total-items="total" ng-model="currentPage" ng-change="buscarContactos()"
+                    max-size="5" boundary-links="true"
+                    items-per-page="numPerPage" class="pagination-sm">
+        </pagination>
+    </div>
+    </div>
+</div>
+<!-- Fin templates/lista-persona-partial -->
